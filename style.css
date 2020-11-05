@@ -1,0 +1,10 @@
+div{
+    margin:1rem;
+    text-align: center;
+}
+div.header{
+    margin:0px;
+}
+button{
+    padding: 50px;
+}
