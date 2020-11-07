@@ -17,6 +17,10 @@ var CalculateTip = {
     var tipPerHead = document.getElementById('tipPerHead');
     var totalBillPerHead = document.getElementById('totalBillPerHead');
 
+    var input1 = document.getElementById("billAmount");
+    var input2 = document.getElementById("tipPercent");
+    var input3 = document.getElementById("numOfPeople");
+
     function setTipPerHead(value) {
         tipPerHead.innerHTML = '$'+value;
     }
@@ -25,13 +29,33 @@ var CalculateTip = {
         totalBillPerHead.innerHTML = '$'+value;
     }
 
+    // Code to check 'enter' button key down
+    input1.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById("calculateBtn").click();
+        }
+    });
+    input2.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById("calculateBtn").click();
+        }
+    });
+    input3.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById("calculateBtn").click();
+        }
+    });
+
     // Calculation form submit event handler
     calculate.addEventListener('click', function() {
         try{
-            var billAmount = document.getElementById("billAmount").value;
-            var tipPercent = document.getElementById("tipPercent").value;
-            var numOfPeople = document.getElementById("numOfPeople").value;
-            
+            var billAmount = input1.value;
+            var tipPercent = input2.value;
+            var numOfPeople = input3.value;
+            // Invalid input exception handling
             if (billAmount=='' && tipPercent=='' && numOfPeople=='') {
                 throw new Error("Fill all the fields!");
             } else if(billAmount=='') {
@@ -59,13 +83,9 @@ var CalculateTip = {
     // Reset form event handler
     resetbutton.addEventListener('click', function() {
         try{
-            var billAmount = document.getElementById("billAmount");
-            var tipPercent = document.getElementById("tipPercent");
-            var numOfPeople = document.getElementById("numOfPeople");
-
-            billAmount.value = '';
-            tipPercent.value = '';
-            numOfPeople.value = '';
+            input1.value = '';
+            input2.value = '';
+            input3.value = '';
 
             tipPerHead.innerHTML = '$0.00';
             totalBillPerHead.innerHTML = '$0.00';
